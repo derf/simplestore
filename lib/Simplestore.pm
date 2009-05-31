@@ -4,6 +4,7 @@
 ## License: WTFPL <http://sam.zoy.org/wtfpl>
 use strict;
 use warnings;
+use Carp;
 
 our (@ISA, @EXPORT, $VERSION);
 require Exporter;
@@ -15,7 +16,7 @@ sub load {
 	my $file = shift;
 	my ($store, $key, $value);
 	$store = shift if @_;
-	open(my $handle, '<', $file) or die("Cannot read $file: $!");
+	open(my $handle, '<', $file) or confess("Cannot read $file: $!");
 	while (<$handle>) {
 		chomp;
 		/^(\S+)\s+(.*)$/ or next;
@@ -33,7 +34,7 @@ sub load {
 sub save {
 	my ($file, $store) = @_;
 	my $key;
-	open(my $handle, '>', $file) or die("Cannot open $file: $!");
+	open(my $handle, '>', $file) or confess("Cannot open $file: $!");
 	foreach $key (keys(%$store)) {
 		foreach (split(/\n/, $store->{$key})) {
 			print $handle "$key\t$_\n";
