@@ -1,4 +1,3 @@
-#!/usr/bin/env perl
 ## Library for the Simplestore format
 ## Copyright © 2009 by Daniel Friesel <derf@derf.homelinux.org>
 ## License: WTFPL <http://sam.zoy.org/wtfpl>
