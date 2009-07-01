@@ -10,6 +10,8 @@ install: build/Simplestore.3pm
 	mkdir -p $(prefix)/$(perl_lib)/$(perl_version) $(prefix)/share/man/man3
 	cp lib/Simplestore.pm $(prefix)/$(perl_lib)/$(perl_version)
 	cp build/Simplestore.3pm $(prefix)/share/man/man3
+	chmod 644 $(prefix)/$(perl_lib)/$(perl_version)/Simplestore.pm
+	chmod 644 $(prefix)/share/man/man3/Simplestore.3pm
 
 uninstall:
 	rm -f $(prefix)/$(perl_lib)/$(perl_version)/Simplestore.pm
