@@ -79,17 +79,19 @@ easy-to-parse file format.
 
 =over
 
-=item B<load>(I<store file> [, I<hashref>])
+=item B<load>(I<storefile>[, I<hashref>])
 
-Load the hash saved in I<store file>. Returns a hash ref containing the hash
-saved in I<store file>.
+Load the hash saved in I<storefile>. Returns a hash ref containing the hash
+saved in I<storefile>.
 
-If I<hashref> is specified, I<store file> will not be loaded into an empty hash,
-but into I<hashref>. However, keys in I<store file> overwrite those in I<hashref>.
+If I<hashref> is specified, I<storefile> will not be loaded into an empty hash,
+but into I<hashref>. However, keys in I<storefile> overwrite those in I<hashref>.
 
-=item B<save>(I<store file>, I<hashref>)
+=item B<save>(I<storefile>, I<hashref>)
 
-save I<hashref> in I<store file>. Returns nothing.
+save I<hashref> in I<storefile>. Returns nothing.
+
+=back
 
 =head1 COPYRIGHT
 
