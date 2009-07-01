@@ -1,0 +1,8 @@
+Installation: make && sudo make install
+Depending on your system, you might need make perl_lib=foo/bar perl_version=something install
+
+By default, the library is installed into $(prefix)/$(perl_lib)/$(perl_version)
+                                      -> /usr/local/lib/perl/5.10.0
+
+
+Uninstallation: sudo make uninstall
