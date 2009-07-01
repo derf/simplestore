@@ -62,12 +62,12 @@ Simplestore - simple storage format for hash refs
   say $hash->{word}; # purrl
 
   $hash->{foo} = 'bar';
-  $hash->{word} = "Yeah, this is more thon one\nword, I know";
+  $hash->{word} = "Yeah, this is more than\none word, I know";
   save('somefile', $hash);
 
   # somefile contains:
-  #   word Yeah, this is more than one
-  #   word word, I know
+  #   word Yeah, this is more than
+  #   word one word, I know
   #   foo bar
 
 =head1 DESCRIPTION
