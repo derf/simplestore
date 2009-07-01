@@ -43,3 +43,55 @@ sub save {
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+Simplestore - simple storage format for hash refs
+
+=head1 SYNOPSIS
+
+
+  use Simplestore;
+
+  # somefile contains:
+  #   word purrl
+  #   foo eggs
+  my $hash = load('somefile');
+  say $hash->{word}; # purrl
+
+  $hash->{foo} = 'bar';
+  $hash->{word} = "Yeah, this is more thon one\nword, I know";
+  save('somefile', $hash);
+
+  # somefile contains:
+  #   word Yeah, this is more than one
+  #   word word, I know
+  #   foo bar
+
+=head1 DESCRIPTION
+
+B<Simplestore> is a perl library to store hashes in a very simple,
+easy-to-parse file format.
+
+=head1 FUNCTIONS
+
+=over
+
+=item B<load>(I<store file> [, I<hashref>])
+
+Load the hash saved in I<store file>. Returns a hash ref containing the hash
+saved in I<store file>.
+
+If I<hashref> is specified, I<store file> will not be loaded into an empty hash,
+but into I<hashref>. However, keys in I<store file> overwrite those in I<hashref>.
+
+=item B<save>(I<store file>, I<hashref>)
+
+save I<hashref> in I<store file>. Returns nothing.
+
+=head1 COPYRIGHT
+
+Copyright (C) 2009 by Daniel Friesel.
+Licensed under the terms of the WTFPL <http://sam.zoy.org/wtfpl>.
