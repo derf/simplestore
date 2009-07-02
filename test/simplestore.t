@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use Test::More tests => 7;
-my $testfile = "/tmp/envstore-test-$$";
+my $testfile = "/tmp/simplestore-test-$$";
 
 my $hash;
 
@@ -23,3 +23,5 @@ is($hash->{dude}, "dudette\nfoo", 'load: preserve hash keys');
 $hash = {foo => "moose\nbaz"};
 $hash = load($testfile, $hash);
 is($hash->{foo}, "bar\nbar", 'load: overwrite conflicting hash keys');
+
+unlink($testfile);
