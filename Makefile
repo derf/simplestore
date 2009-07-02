@@ -6,6 +6,9 @@ build/Simplestore.3pm: lib/Simplestore.pm
 	mkdir -p build
 	pod2man $< > $@
 
+test: test/main
+	sh $<
+
 install: build/Simplestore.3pm
 	mkdir -p $(prefix)/$(perl_lib)/$(perl_version) $(prefix)/share/man/man3
 	cp lib/Simplestore.pm $(prefix)/$(perl_lib)/$(perl_version)
@@ -20,4 +23,4 @@ uninstall:
 clean:
 	rm -rf build
 
-.PHONY: install uninstall clean
+.PHONY: clean install test uninstall
