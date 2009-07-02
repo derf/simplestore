@@ -13,17 +13,18 @@ $VERSION = '1.0';
 
 sub load {
 	my $file = shift;
-	my ($store, $key, $value);
+	my ($store, $key, $value, @keys);
 	$store = shift if @_;
 	open(my $handle, '<', $file) or confess("Cannot read $file: $!");
 	while (<$handle>) {
 		chomp;
 		/^(\S+)\s+(.*)$/ or next;
 		($key, $value) = ($1, $2);
-		if (exists($store->{$key})) {
+		if (exists($store->{$key}) and grep {$_ eq $key} @keys) {
 			$store->{$key} .= "\n$value";
 		} else {
 			$store->{$key} = $value;
+			push(@keys, $key);
 		}
 	}
 	close($handle);
