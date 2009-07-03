@@ -5,7 +5,6 @@ use Module::Build;
 
 my $build = Module::Build->new(
 	dist_version => '1.0',
-	license => 'wtfpl',
 	module_name => 'Simplestore',
 	test_files => 'test/simplestore.t',
 );
