@@ -1,10 +1,13 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-use Test::More tests => 7;
+use Pod::Checker;
+use Test::More tests => 8;
 my $testfile = "/tmp/simplestore-test-$$";
 
 my $hash;
+
+is(podchecker('lib/Simplestore.pm'), 0, "Valid POD");
 
 BEGIN {use_ok('Simplestore')}
 require_ok('Simplestore');
