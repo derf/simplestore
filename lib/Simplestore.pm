@@ -107,4 +107,4 @@ apps of all kinds.
 =head1 COPYRIGHT
 
 Copyright (C) 2009 by Daniel Friesel.
-Licensed under the terms of the WTFPL <http://sam.zoy.org/wtfpl>.
+Licensed under the terms of the WTFPL E<lt>http://sam.zoy.org/wtfplE<gt>.
