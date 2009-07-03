@@ -76,6 +76,9 @@ Simplestore - simple storage format for hash refs
 B<Simplestore> is a perl library to store hashes in a very simple,
 easy-to-parse file format.
 
+Note that it can only store simple hashes with string/digit values.
+References or any other complex stuff is not supported.
+
 =head1 FUNCTIONS
 
 =over
@@ -93,6 +96,13 @@ but into I<hashref>. However, keys in I<storefile> overwrite those in I<hashref>
 save I<hashref> in I<storefile>. Returns nothing.
 
 =back
+
+=head1 MOTIVATION
+
+B<Simplestore> aims to provide a common, simple format to store data.
+The format is extremely easy to parse in almost all languages, even C or Shell,
+thus Simplestore should offer a good way to exchange non-complex data between
+apps of all kinds.
 
 =head1 COPYRIGHT
 
