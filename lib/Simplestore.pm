@@ -97,6 +97,13 @@ save I<hashref> in I<storefile>. Returns nothing.
 
 =back
 
+=head1 STORAGE FORMAT
+
+The store file contains key-value-pairs, each of them separated by a newline,
+The key and value are separated by a single tab.
+If a value contains newlines, they will be printed, but the next line(s) will be
+prefixed by the key. For a little example, see SYNOPSIS.
+
 =head1 MOTIVATION
 
 B<Simplestore> aims to provide a common, simple format to store data.
