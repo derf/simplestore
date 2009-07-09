@@ -63,13 +63,14 @@ Simplestore - simple storage format for hash refs
   say $hash->{word}; # purrl
 
   $hash->{foo} = 'bar';
-  $hash->{word} = "Yeah, this is more than\none word, I know";
+  $hash->{sentence} = "Mind the\nnewnile.;
   save('somefile', $hash);
 
   # somefile contains:
-  #   word Yeah, this is more than
-  #   word one word, I know
+  #   word purrl
   #   foo bar
+  #   sentence Mind the
+  #   sentence newline.
 
 =head1 DESCRIPTION
 
@@ -100,7 +101,7 @@ save I<hashref> in I<storefile>. Returns nothing.
 =head1 STORAGE FORMAT
 
 The store file contains key-value-pairs, each of them separated by a newline,
-The key and value are separated by a single tab.
+the key and value are separated by a single tab.
 If a value contains newlines, they will be printed, but the next line(s) will be
 prefixed by the key. For a little example, see SYNOPSIS.
 
