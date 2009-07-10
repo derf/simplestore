@@ -1,6 +1,7 @@
 ## Library for the Simplestore format
 ## Copyright © 2009 by Daniel Friesel <derf@derf.homelinux.org>
 ## License: WTFPL <http://sam.zoy.org/wtfpl>
+package Simplestore;
 use strict;
 use warnings;
 use Carp;
