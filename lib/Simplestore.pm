@@ -9,7 +9,7 @@ use Carp;
 our (@ISA, @EXPORT, $VERSION);
 require Exporter;
 @ISA = ('Exporter');
-@EXPORT = ('load', 'save');
+@EXPORT = ();
 $VERSION = '1.0';
 
 sub load {
@@ -60,12 +60,12 @@ Simplestore - simple storage format for hash refs
   # somefile contains:
   #   word purrl
   #   foo eggs
-  my $hash = load('somefile');
+  my $hash = Simplestore::load('somefile');
   say $hash->{word}; # purrl
 
   $hash->{foo} = 'bar';
   $hash->{sentence} = "Mind the\nnewnile.;
-  save('somefile', $hash);
+  Simplestore::save('somefile', $hash);
 
   # somefile contains:
   #   word purrl
@@ -83,9 +83,13 @@ References or any other complex stuff is not supported.
 
 =head1 FUNCTIONS
 
+Note: The function names are quite generic, so by default they are not
+exported.  Use C<< use Simplestore qw/load save/ >> if you want to use them
+directly.
+
 =over
 
-=item B<load>(I<storefile>[, I<hashref>])
+=item B<Simplestore::load>(I<storefile>[, I<hashref>])
 
 Load the hash saved in I<storefile>. Returns a hash ref containing the hash
 saved in I<storefile>.
@@ -93,7 +97,7 @@ saved in I<storefile>.
 If I<hashref> is specified, I<storefile> will not be loaded into an empty hash,
 but into I<hashref>. However, keys in I<storefile> overwrite those in I<hashref>.
 
-=item B<save>(I<storefile>, I<hashref>)
+=item B<Simplestore::save>(I<storefile>, I<hashref>)
 
 save I<hashref> in I<storefile>. Returns nothing.
 
