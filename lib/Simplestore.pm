@@ -34,9 +34,8 @@ sub load {
 
 sub save {
 	my ($file, $store) = @_;
-	my $key;
 	open(my $handle, '>', $file) or confess("Cannot open $file: $!");
-	foreach $key (keys(%$store)) {
+	foreach my $key (keys(%$store)) {
 		if ($key !~ /^\w+$/) {
 			confess("Invalid key name: May only contain alphanumeric and _");
 		}
