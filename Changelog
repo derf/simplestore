@@ -1,0 +1,4 @@
+Simplestore 0.1 - Sun Jul 12 2009
+
+    * Provides Simplestore::save and Simplestore::load
+    * Some sanity checks on keys and values

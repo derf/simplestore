@@ -10,7 +10,7 @@ our (@ISA, @EXPORT, $VERSION);
 require Exporter;
 @ISA = ('Exporter');
 @EXPORT = ();
-$VERSION = '1.0';
+$VERSION = '0.1';
 
 sub load {
 	my $file = shift;
