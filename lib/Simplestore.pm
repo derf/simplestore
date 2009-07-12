@@ -37,6 +37,9 @@ sub save {
 	my $key;
 	open(my $handle, '>', $file) or confess("Cannot open $file: $!");
 	foreach $key (keys(%$store)) {
+		if ($key !~ /^\w+$/) {
+			confess("Invalid key name: May only contain alphanumeric and _");
+		}
 		foreach (split(/\n/, $store->{$key})) {
 			print $handle "$key\t$_\n";
 		}
@@ -78,8 +81,9 @@ Simplestore - simple storage format for hash refs
 B<Simplestore> is a perl library to store hashes in a very simple,
 easy-to-parse file format.
 
-Note that it can only store simple hashes with string/digit values.
-References or any other complex stuff is not supported.
+Note that it can only store simple hashes with string/digit values and
+word keys (the key must match \w+, like a perl variable name for example).
+References or any other complex stuff are not supported.
 
 =head1 FUNCTIONS
 
