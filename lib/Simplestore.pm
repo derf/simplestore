@@ -66,7 +66,7 @@ Simplestore - simple storage format for hash refs
   say $hash->{word}; # purrl
 
   $hash->{foo} = 'bar';
-  $hash->{sentence} = "Mind the\nnewnile.;
+  $hash->{sentence} = "Mind the\nnewnile.";
   Simplestore::save('somefile', $hash);
 
   # somefile contains:
