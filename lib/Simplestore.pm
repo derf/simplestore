@@ -5,22 +5,24 @@ package Simplestore;
 use strict;
 use warnings;
 use Carp;
+use base 'Exporter';
 
-our (@ISA, @EXPORT, $VERSION);
-require Exporter;
-@ISA = ('Exporter');
-@EXPORT = ();
-$VERSION = '0.1';
+our @EXPORT_OK = ('load', 'save');
+my $VERSION = '0.1';
 
 sub load {
-	my $file = shift;
-	my ($store, $key, $value, @keys);
-	$store = shift if @_;
-	open(my $handle, '<', $file) or confess("Cannot read $file: $!");
+	my ($file, $store) = @_;
+	my @keys;
+
+	open(my $handle, '<', $file) or confess("Cannot open $file for reading: $!");
+
 	while (<$handle>) {
 		chomp;
-		/^(\S+)\s+(.*)$/ or next;
-		($key, $value) = ($1, $2);
+		if ($_ !~ / ^ (\S+) \s+ (.*) $ /x) {
+			next;
+		}
+		my ($key, $value) = ($1, $2);
+
 		if (exists($store->{$key}) and grep {$_ eq $key} @keys) {
 			$store->{$key} .= "\n$value";
 		} else {
@@ -28,22 +30,25 @@ sub load {
 			push(@keys, $key);
 		}
 	}
-	close($handle);
+
+	close($handle) or confess("Cannot close $file: $!");
 	return($store);
 }
 
 sub save {
 	my ($file, $store) = @_;
-	open(my $handle, '>', $file) or confess("Cannot open $file: $!");
-	foreach my $key (keys(%$store)) {
-		if ($key !~ /^\w+$/) {
+
+	open(my $handle, '>', $file) or confess("Cannot open $file for writing: $!");
+	foreach my $key (keys(%{$store})) {
+		if ($key !~ / ^ \w+ $ /x) {
 			confess("Invalid key name: May only contain alphanumeric and _");
 		}
 		foreach (split(/\n/, $store->{$key})) {
 			print $handle "$key\t$_\n";
 		}
 	}
-	close($handle);
+	close($handle) or confess("Cannot close $file: $!");
+	return 1;
 }
 
 1;
@@ -120,7 +125,7 @@ The format is extremely easy to parse in almost all languages, even C or Shell,
 thus Simplestore should offer a good way to exchange non-complex data between
 apps of all kinds.
 
-=head1 COPYRIGHT
+=head1 AUTHOR
 
 Copyright (C) 2009 by Daniel Friesel.
 Licensed under the terms of the WTFPL E<lt>http://sam.zoy.org/wtfplE<gt>.
