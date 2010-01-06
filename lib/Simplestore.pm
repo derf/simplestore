@@ -67,12 +67,12 @@ Simplestore - simple storage format for hash refs
   # somefile contains:
   #   word purrl
   #   foo eggs
-  my $hash = Simplestore::load('somefile');
-  say $hash->{word}; # purrl
+  my $ref = Simplestore::load('somefile');
+  say $ref->{word}; # purrl
 
-  $hash->{foo} = 'bar';
-  $hash->{sentence} = "Mind the\nnewnile.";
-  Simplestore::save('somefile', $hash);
+  $ref->{foo} = 'bar';
+  $ref->{sentence} = "Mind the\nnewnile.";
+  Simplestore::save('somefile', $ref);
 
   # somefile contains:
   #   word purrl
