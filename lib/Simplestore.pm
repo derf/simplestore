@@ -40,8 +40,8 @@ sub save {
 
 	open(my $handle, '>', $file) or confess("Cannot open $file for writing: $!");
 	foreach my $key (keys(%{$store})) {
-		if ($key !~ / ^ \w+ $ /x) {
-			confess("Invalid key name: May only contain alphanumeric and _");
+		if ($key !~ / ^ [\w.]+ $ /x) {
+			confess("Invalid key name: $key: May only contain [\\w.]");
 		}
 		foreach (split(/\n/, $store->{$key})) {
 			print $handle "$key\t$_\n";
